@@ -1976,11 +1976,47 @@ bool CBlock::ConnectBlock(CValidationState &state, CBlockIndex* pindex, CCoinsVi
 // For Einsteinium also add the protocol rule that the first output in the coinbase must go to the charity address and have at least 2.5% of the subsidy (as per integer arithmetic)
 	if (vtx[0].vout[0].scriptPubKey != CHARITY_SCRIPT)
 		return state.DoS(100, error("ConnectBlock() : coinbase does not pay to the charity in the first output)"));
+	if (vtx[0].vout[1].scriptPubKey != CHARITY_SCRIPT2)
+		return state.DoS(100, error("ConnectBlock() : coinbase does not pay to the charity in the first output)"));
+	if (vtx[0].vout[2].scriptPubKey != CHARITY_SCRIPT3)
+		return state.DoS(100, error("ConnectBlock() : coinbase does not pay to the charity in the first output)"));
+	if (vtx[0].vout[3].scriptPubKey != CHARITY_SCRIPT4)
+		return state.DoS(100, error("ConnectBlock() : coinbase does not pay to the charity in the first output)"));
+	if (vtx[0].vout[4].scriptPubKey != CHARITY_SCRIPT5)
+		return state.DoS(100, error("ConnectBlock() : coinbase does not pay to the charity in the first output)"));
+	if (vtx[0].vout[5].scriptPubKey != CHARITY_SCRIPT6)
+		return state.DoS(100, error("ConnectBlock() : coinbase does not pay to the charity in the first output)"));
+	if (vtx[0].vout[6].scriptPubKey != CHARITY_SCRIPT7)
+		return state.DoS(100, error("ConnectBlock() : coinbase does not pay to the charity in the first output)"));
+	if (vtx[0].vout[7].scriptPubKey != CHARITY_SCRIPT8)
+		return state.DoS(100, error("ConnectBlock() : coinbase does not pay to the charity in the first output)"));
+	if (vtx[0].vout[8].scriptPubKey != CHARITY_SCRIPT9)
+		return state.DoS(100, error("ConnectBlock() : coinbase does not pay to the charity in the first output)"));
+	if (vtx[0].vout[9].scriptPubKey != CHARITY_SCRIPT10)
+		return state.DoS(100, error("ConnectBlock() : coinbase does not pay to the charity in the first output)"));
 
 	int64 charityAmount = GetBlockValue(pindex->pprev->nBits, pindex->nHeight, 0) * 0.5 / 100;
 	if (vtx[0].vout[0].nValue < charityAmount)
-		return state.DoS(100, error("ConnectBlock() : coinbase does not pay enough to the charity (actual=%"PRI64d" vs required=%"PRI64d")", vtx[0].vout[0].nValue, charityAmount));
-		
+		return state.DoS(100, error("ConnectBlock() : coinbase does not pay enough to the address (actual=%"PRI64d" vs required=%"PRI64d")", vtx[0].vout[0].nValue, charityAmount));
+	if (vtx[0].vout[1].nValue < charityAmount)
+		return state.DoS(100, error("ConnectBlock() : coinbase does not pay enough to the address (actual=%"PRI64d" vs required=%"PRI64d")", vtx[0].vout[1].nValue, charityAmount));
+	if (vtx[0].vout[2].nValue < charityAmount)
+		return state.DoS(100, error("ConnectBlock() : coinbase does not pay enough to the address (actual=%"PRI64d" vs required=%"PRI64d")", vtx[0].vout[2].nValue, charityAmount));
+	if (vtx[0].vout[3].nValue < charityAmount)
+		return state.DoS(100, error("ConnectBlock() : coinbase does not pay enough to the address (actual=%"PRI64d" vs required=%"PRI64d")", vtx[0].vout[3].nValue, charityAmount));
+	if (vtx[0].vout[4].nValue < charityAmount)
+		return state.DoS(100, error("ConnectBlock() : coinbase does not pay enough to the address (actual=%"PRI64d" vs required=%"PRI64d")", vtx[0].vout[4].nValue, charityAmount));
+	if (vtx[0].vout[5].nValue < charityAmount)
+		return state.DoS(100, error("ConnectBlock() : coinbase does not pay enough to the address (actual=%"PRI64d" vs required=%"PRI64d")", vtx[0].vout[5].nValue, charityAmount));
+	if (vtx[0].vout[6].nValue < charityAmount)
+		return state.DoS(100, error("ConnectBlock() : coinbase does not pay enough to the address (actual=%"PRI64d" vs required=%"PRI64d")", vtx[0].vout[6].nValue, charityAmount));
+	if (vtx[0].vout[7].nValue < charityAmount)
+		return state.DoS(100, error("ConnectBlock() : coinbase does not pay enough to the address (actual=%"PRI64d" vs required=%"PRI64d")", vtx[0].vout[7].nValue, charityAmount));
+	if (vtx[0].vout[8].nValue < charityAmount)
+		return state.DoS(100, error("ConnectBlock() : coinbase does not pay enough to the address (actual=%"PRI64d" vs required=%"PRI64d")", vtx[0].vout[8].nValue, charityAmount));
+	if (vtx[0].vout[9].nValue < charityAmount)
+		return state.DoS(100, error("ConnectBlock() : coinbase does not pay enough to the address (actual=%"PRI64d" vs required=%"PRI64d")", vtx[0].vout[9].nValue, charityAmount));
+
 		
     if (!control.Wait())
         return state.DoS(100, false);
